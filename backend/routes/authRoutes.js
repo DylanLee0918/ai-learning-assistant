@@ -125,7 +125,7 @@ router.post("/change-password", protect, changePassword);
  * /api/auth/register:
  *   post:
  *     summary: Register a new user
- *     tags: [Auth]
+ *     tags: [Authentication]
  *     requestBody:
  *       required: true
  *       content:
@@ -155,7 +155,7 @@ router.post("/register", registerValidation, register);
  * /api/auth/login:
  *   post:
  *     summary: Login with email and password
- *     tags: [Auth]
+ *     tags: [Authentication]
  *     requestBody:
  *       required: true
  *       content:
@@ -187,7 +187,7 @@ router.post("/login", loginValidation, login);
  * /api/auth/profile:
  *   get:
  *     summary: Get the logged-in user's profile
- *     tags: [Auth]
+ *     tags: [Authentication]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -211,7 +211,7 @@ router.get("/profile", protect, getProfile);
  * /api/auth/profile:
  *   put:
  *     summary: Update the logged-in user's profile
- *     tags: [Auth]
+ *     tags: [Authentication]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -251,7 +251,7 @@ router.put("/profile", protect, updateProfile);
  * /api/auth/change-password:
  *   post:
  *     summary: Change the logged-in user's password
- *     tags: [Auth]
+ *     tags: [Authentication]
  *     security:
  *       - bearerAuth: []
  *     requestBody:

@@ -14,6 +14,8 @@ const options = {
 					type: "http",
 					scheme: "bearer",
 					bearerFormat: "JWT",
+					description:
+						"Enter your JWT token to access protected routes", // ← adds a description
 				},
 			},
 		},
