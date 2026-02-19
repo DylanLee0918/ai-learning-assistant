@@ -188,7 +188,7 @@ export const changePassword = async (req, res, next) => {
 			});
 		}
 
-		const user = await User.findById(req.user._id).select("+password");
+		const user = await User.findById(req.user._id).select("+password ");
 
 		// Check current password
 		const isMatch = await user.matchPassword(currentPassword);
