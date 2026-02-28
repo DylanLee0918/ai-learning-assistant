@@ -98,6 +98,19 @@ export const generateQuiz = async (req, res, next) => {
 			parseInt(numQuestions),
 		);
 
+		// Validate that each correctAnswer exists in its options
+		const invalidQuestions = questions.filter(
+			(q) => !q.options.includes(q.correctAnswer),
+		);
+
+		if (invalidQuestions.length > 0) {
+			return res.status(500).json({
+				success: false,
+				error: "AI generated invalid quiz questions where the correct answer does not match any option. Please try again.",
+				statusCode: 500,
+			});
+		}
+
 		// Save to database
 		const quiz = await Quiz.create({
 			userId: req.user._id,
@@ -327,7 +340,7 @@ export const getChatHistory = async (req, res, next) => {
 		const chatHistory = await ChatHistory.findOne({
 			userId: req.user._id,
 			documentId: documentId,
-		}).select("message"); // Only retrieve the messages array
+		}).select("messages"); // Only retrieve the messages array
 
 		if (!chatHistory) {
 			return res.status(200).json({
