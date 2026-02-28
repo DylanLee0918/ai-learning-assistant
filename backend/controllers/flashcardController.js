@@ -18,7 +18,7 @@ export const getFlashcards = async (req, res, next) => {
 			data: flashcards,
 		});
 	} catch (error) {
-		next();
+		next(error);
 	}
 };
 
@@ -39,7 +39,7 @@ export const getAllFlashcardSets = async (req, res, next) => {
 			data: flashcardSets,
 		});
 	} catch (error) {
-		next();
+		next(error);
 	}
 };
 
@@ -85,7 +85,7 @@ export const reviewFlashcard = async (req, res, next) => {
 			message: "Flashcard reviewed successfully",
 		});
 	} catch (error) {
-		next();
+		next(error);
 	}
 };
 
@@ -96,7 +96,7 @@ export const toggleStartFlashcard = async (req, res, next) => {
 	try {
 		const flashcardSet = await Flashcard.findOne({
 			"cards._id": req.params.cardId,
-			userId: req.params._id,
+			userId: req.user._id,
 		});
 
 		if (!flashcardSet) {
@@ -131,7 +131,7 @@ export const toggleStartFlashcard = async (req, res, next) => {
 			message: `Flashcard ${flashcardSet.cards[cardIndex].isStarred ? "starred" : "unstarred"}`,
 		});
 	} catch (error) {
-		next();
+		next(error);
 	}
 };
 
@@ -142,7 +142,7 @@ export const deleteFlashcardSet = async (req, res, next) => {
 	try {
 		const flashcardSet = await Flashcard.findOne({
 			_id: req.params.id,
-			userId: req.params._id,
+			userId: req.user._id,
 		});
 
 		if (!flashcardSet) {
@@ -160,6 +160,6 @@ export const deleteFlashcardSet = async (req, res, next) => {
 			message: "Flashcard set deleted successfully",
 		});
 	} catch (error) {
-		next();
+		next(error);
 	}
 };
