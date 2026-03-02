@@ -1,30 +1,30 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import AppLayout from "../../components/layout/AppLayout";
+import { useAuth } from "../../context/AuthContext";
 
 const ProtectedRoute = () => {
-  const isAuthenticated = false;
-  const isLoading = false;
+	const { isAuthenticated, loading } = useAuth;
 
-  if (isLoading) {
-    return (
-      <>
-        <div>loading...</div>
-      </>
-    );
-  }
+	if (loading) {
+		return (
+			<>
+				<div>loading...</div>
+			</>
+		);
+	}
 
-  return (
-    <React.Fragment>
-      {isAuthenticated ? (
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      ) : (
-        <Navigate to="/login" replace />
-      )}
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			{isAuthenticated ? (
+				<AppLayout>
+					<Outlet />
+				</AppLayout>
+			) : (
+				<Navigate to="/login" replace />
+			)}
+		</React.Fragment>
+	);
 };
 
 export default ProtectedRoute;
