@@ -146,7 +146,7 @@ const DocumentListPage = () => {
 
     return (
         <div className="h-full">
-            {/** Subtle background pattern */}
+            {/** Subtle background patterns */}
             <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-30 pointer-events-none" />
 
             <div className="relative max-w-7xl mx-auto">
