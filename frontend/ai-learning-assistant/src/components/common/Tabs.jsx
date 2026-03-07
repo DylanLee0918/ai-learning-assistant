@@ -23,6 +23,19 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
                 </nav>
             </div>
             <div className="py-6">
+                {tabs.map((tab) => (
+                    <div
+                        key={tab.name}
+                        className={
+                            activeTab === tab.name ? "animate-in fade-in duration-300" : "hidden"
+                        }
+                    >
+                        {typeof tab.content === "function" ? tab.content() : tab.content}
+                    </div>
+                ))}
+            </div>
+            {/** Uncomment this blockcodes if you wanted to use the original logic */}
+            {/* <div className="py-6">
                 {tabs.map((tab) => {
                     if (tab.name === activeTab) {
                         return (
@@ -33,7 +46,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
                     }
                     return null;
                 })}
-            </div>
+            </div> */}
         </div>
     );
 };
