@@ -9,7 +9,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
                         <button
                             key={tab.name}
                             onClick={() => setActiveTab(tab.name)}
-                            className={`relative pb-4 px-6 text-sm font-semibold transition-all duration-200 ${activeTab === tab.name ? "text-emerald-600" : "text-slate-600 hover:text-slate-900"}`}
+                            className={`relative pb-4 px-2 md:px-6 text-sm font-semibold transition-all duration-200 ${activeTab === tab.name ? "text-emerald-600" : "text-slate-600 hover:text-slate-900"}`}
                         >
                             <span className="relative z-10">{tab.label}</span>
                             {activeTab === tab.name && (
