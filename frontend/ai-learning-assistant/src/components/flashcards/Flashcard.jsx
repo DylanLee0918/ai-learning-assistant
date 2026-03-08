@@ -1,8 +1,22 @@
 import { useState } from "react";
 import { Star, RotateCcw } from "lucide-react";
 
-const Flashcard = ({ flashcard, onToggleStar }) => {
+const Flashcard = ({ flashcard, onToggleStar, selectedSet, currentCardIndex }) => {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    if (selectedSet && Object.keys(selectedSet).length > 0) {
+        if (currentIndex < selectedSet.cards.length) {
+            if (currentIndex !== currentCardIndex) {
+                if (isFlipped) {
+                    setIsFlipped(false);
+                    setCurrentIndex(currentCardIndex);
+                }
+            }
+        } else {
+            setCurrentIndex(0);
+        }
+    }
 
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
