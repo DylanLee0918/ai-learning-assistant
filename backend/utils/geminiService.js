@@ -207,6 +207,13 @@ export const chatWithContext = async (question, chunks) => {
 
     // console.log("context_____", context);
 
+    /**
+     * Used this prompt if you want to strictly response about the document context only.
+     *
+     * Based on the following context from a document, Analyse the context and answer the user's questions.
+     * If the answer is not in the context, say so.
+     */
+
     const prompt = `You are a helpful AI learning assistant. Use the following document context as your primary source of information to answer the user's question.
     If the answer is not found in the context, use your own knowledge to provide a helpful and accurate answer.
     
