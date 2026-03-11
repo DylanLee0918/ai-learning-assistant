@@ -9,6 +9,7 @@ import PageHeader from "../../components/common/PageHeader";
 import ChatInterface from "../../components/chat/ChatInterface";
 import AIActions from "../../components/ai/AIActions";
 import FlashcardManager from "../../components/flashcards/FlashcardManager";
+import QuizManager from "../../components/quizzes/QuizManager";
 import Spinner from "../../components/common/Spinner";
 import toast from "react-hot-toast";
 
@@ -101,7 +102,7 @@ const DocumentDetailPage = () => {
     };
 
     const renderQuizzesTab = () => {
-        return "renderQuizzesTab";
+        return <QuizManager documentId={id} />;
     };
 
     const tabs = [
