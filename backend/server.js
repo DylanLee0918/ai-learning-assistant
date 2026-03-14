@@ -27,15 +27,18 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware to handle CORS
-app.use(
-    cors({
-        origin: "https://main.d31u5jg2p3d689.amplifyapp.com", // <-- your frontend URL
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // include OPTIONS for preflight
-        allowedHeaders: ["Content-Type", "Authorization"],
-        credentials: true, // allow cookies/auth headers
-    }),
-);
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(",")
+    : ["http://localhost:5173"];
+
+const corsOptions = {
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 
 // // Middleware to handle CORS
 // app.use(
