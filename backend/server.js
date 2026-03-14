@@ -37,9 +37,6 @@ app.use(
     }),
 );
 
-// Handle preflight OPTIONS requests for all routes
-app.options("*", cors());
-
 // // Middleware to handle CORS
 // app.use(
 // 	cors({
