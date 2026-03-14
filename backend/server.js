@@ -67,8 +67,6 @@ app.use("/api/ai", aiRoutes);
 app.use("/api/quizzes", quizRoutes);
 app.use("/api/progress", progressRoutes);
 
-app.use(errorHandler);
-
 // 404 Handler
 app.use((req, res) => {
     res.status(404).json({
@@ -77,6 +75,8 @@ app.use((req, res) => {
         statusCode: 404,
     });
 });
+
+app.use(errorHandler);
 
 // Start the server
 const PORT = process.env.PORT || 8000;
