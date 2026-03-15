@@ -85,7 +85,7 @@ const processPDF = async (documentId, filePath) => {
         });
 
         // Delete file after text is extracted — no longer needed
-        await fs.unlink(filePath).catch(() => {});
+        // await fs.unlink(filePath).catch(() => {});
 
         console.log(`Document ${documentId} processed successfully`);
     } catch (error) {
